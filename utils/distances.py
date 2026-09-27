@@ -1,3 +1,13 @@
 def manhattan(a, b):
-    """İki nokta arasındaki Manhattan mesafesini hesaplar."""
-    return abs(b[0] - a[0]) + abs(b[1] - a[1])
+    return minkowski(a, b, 1)
+
+def euclidean(a, b):
+    return minkowski(a, b, 2)
+
+def minkowski(a, b, p):
+    """Genelleştirilmiş Minkowski mesafesini hesaplar."""
+    d_x = b[0] - a[0]
+    d_y = b[1] - a[1]
+
+    distance = (abs(d_x)**p + abs(d_y)**p)**(1/p)
+    return distance
